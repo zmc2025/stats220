@@ -1,11 +1,16 @@
-# stats220
+## Header 1
+hello this is a test
 
-This is my repo for STATS 220. 
+#header 2, bulletpoints:
 
-A little about me:
+- *Unordered* bulletpoint with italics
+-  **Unordered** bulletpoint with bold
+-  test for no bold and italics
 
-- I am undertaking a degree in data science
-- I am taking STATS 220 because of data science
-- I am interested in learning about stats
+1. ordered bulletpoint 1
+2. ordered 2
+3. ordered 3
 
-A meme that captures how I currently feel about my university studies is ![](https://pbs.twimg.com/media/GR5uNKiWcAAgKjl.jpg)
+# links:
+- [uoa website](https://www.auckland.ac.nz/en.html)
+- the gif: (https://c.tenor.com/gMELs8rtG1wAAAAd/tenor.gif)
