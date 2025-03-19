@@ -13,4 +13,4 @@ hello this is a test
 
 # links:
 - [uoa website](https://www.auckland.ac.nz/en.html)
-- the gif: (https://c.tenor.com/gMELs8rtG1wAAAAd/tenor.gif)
+- the gif: ![](https://c.tenor.com/gMELs8rtG1wAAAAd/tenor.gif)
