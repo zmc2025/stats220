@@ -1,7 +1,7 @@
 ## Header 1
 hello this is a test
 
-#header 2, bulletpoints:
+# header 2, bulletpoints:
 
 - *Unordered* bulletpoint with italics
 -  **Unordered** bulletpoint with bold
