@@ -1,0 +1,63 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+library(tidyverse)
+
+# Get data from csv file
+csv_file <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSlXyYbZQC1GbgA05yq2Y3A9UbJKVimwQH6_Ke_jpxU-qGeraz8bqT5JoErIDvsREryOwgerH8cGjcy/pub?output=csv"
+
+latest_data <- read_csv(csv_file) %>%
+  rename(listens_to_music = "Do you listen to music on the way to uni and or at uni?",
+         audio_device = "what kind of audio devices do you use?",
+         trip_duration = "How long is your trip to uni? (In minutes)"
+         )
+
+# summary values:
+min <- min(latest_data$trip_duration)
+max <- max(latest_data$trip_duration)
+mean<- sum(latest_data$trip_duration)/length(latest_data$trip_duration)
+
+music_count <- latest_data %>% count(listens_to_music)
+```
+
+```{css}
+
+```
+
+## Music Listening Habits of University Students
+
+This report explores how long a student's trip to uni is, do they listen to music on their trip and what kind of audio device do they use
+
+### **Trip duration summary**
+- **Min trip duration:** `r min` minutes.
+- **max trip duration:** `r max` minutes.
+- **Average trip duration:** `r mean` minutes.
+
+### **Number of Students Listening to Music**
+```{r}
+ggplot(latest_data, aes(x = listens_to_music)) + 
+  geom_bar(fill = "lightblue") + 
+  labs(title = "Number of music listeners", x = "Listens to Music", y = "count")
+
+```
+
+From the data, we see that a majority of students `r ifelse(music_count$n[music_count$listens_to_music == "yes"] > music_count$n[music_count$listens_to_music == "no"], "do", "do not")` listen to music on their way to university.
+
+
+### **Preferred Audio Devices**
+```{r}
+ggplot(latest_data, aes(x = audio_device)) + 
+  geom_bar(fill = "lightgreen") +
+  labs(title = "Audio device preference", x = "device type", y = "count") + 
+  scale_x_discrete(labels = c(
+    "earphones (this includes earbuds, iems etc)" = "earphones",
+    "headphones (this includes over-ear headphones, on-ear headphones etc)" = "headphones"
+  ))
+
+```
+
+From the data, most students prefer **`r names(which.max(table(latest_data$audio_device)))`** as their choice of audio device.
